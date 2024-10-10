@@ -33,4 +33,8 @@ public class Restaurant {
                 .chef(chef)
                 .build();
     }
+
+    public void renameRestaurant(String newName) {
+        this.name = newName;
+    }
 }

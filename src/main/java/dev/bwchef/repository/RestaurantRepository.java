@@ -34,9 +34,4 @@ public class RestaurantRepository {
     public void delete(Restaurant restaurant) {
         em.remove(restaurant);
     }
-
-    // 수정
-    public Restaurant update(Restaurant restaurant) {
-        return em.merge(restaurant);
-    }
 }

@@ -38,10 +38,16 @@ public class RestaurantController {
         return new ResponseEntity<>(restaurant, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<RestaurantResponseDTO> UpdateRestaurant(@PathVariable Long id,
                                                                   @RequestBody RestaurantRequestDTO restaurantRequestDTO) {
         RestaurantResponseDTO restaurant = restaurantService.updateRestaurant(id, restaurantRequestDTO);
         return new ResponseEntity<>(restaurant, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> DeleteRestaurant(@PathVariable Long id) {
+        restaurantService.deleteRestaurant(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

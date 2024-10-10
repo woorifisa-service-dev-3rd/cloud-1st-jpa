@@ -48,6 +48,14 @@ public class RestaurantService {
     public RestaurantResponseDTO updateRestaurant(Long id, RestaurantRequestDTO restaurantRequestDTO) {
         Restaurant restaurant = restaurantRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException(id + "에 해당하는 레스토랑이 존재하지 않습니다."));
-        return null;
+        restaurant.renameRestaurant(restaurantRequestDTO.getName());
+        return RestaurantResponseDTO.from(restaurant);
+    }
+
+    @Transactional
+    public void deleteRestaurant(Long id) {
+        Restaurant restaurant = restaurantRepository.findById(id)
+                .orElseThrow(()-> new RuntimeException(id+"에 해당하는 레스토랑이 존재하지 않습니다."));
+        restaurantRepository.delete(restaurant);
     }
 }
