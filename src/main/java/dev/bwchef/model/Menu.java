@@ -24,6 +24,6 @@ public class Menu {
     @Nullable
     private Long price;
 
-
+    private String content;
 
 }

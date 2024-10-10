@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Getter @NoArgsConstructor
 public class Restaurant {
@@ -19,6 +21,9 @@ public class Restaurant {
     private Chef chef;
 
     private String name;
+
+    @OneToMany(mappedBy = "restaurant")
+    private List<Menu> menus;
 
     @Builder
     public Restaurant(Long id, String name, Chef chef) {
