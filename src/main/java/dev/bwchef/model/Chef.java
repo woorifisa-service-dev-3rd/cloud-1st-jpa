@@ -1,5 +1,6 @@
 package dev.bwchef.model;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +13,20 @@ public class Chef {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String theme;  // @JoinColumn 제거
+// <<<<<<< dev-jjinny
+//     private String theme;  // @JoinColumn 제거
+//     private String name;
+
+//     @OneToMany(mappedBy = "chef", cascade = CascadeType.ALL)
+// =======
+    @Nullable
     private String name;
 
-    @OneToMany(mappedBy = "chef", cascade = CascadeType.ALL)
+    @Enumerated(EnumType.STRING)
+    private ChefType type;
+
+    @OneToMany(mappedBy = "chef")
+// >>>>>>> dev
     private List<Restaurant> restaurants = new ArrayList<>();
 
     // Getters and Setters
