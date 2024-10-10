@@ -1,5 +1,6 @@
 package dev.bwchef.model;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -10,15 +11,17 @@ public class Menu {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 
-    @ManyToOne
-    @JoinColumn(name = "menuType_id")
+    @Enumerated(EnumType.STRING)
     private MenuType menuType;
 
+    @Nullable
     private String name;
+
+    @Nullable
     private Long price;
 
 
